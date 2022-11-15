@@ -51,7 +51,6 @@ main {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
 }
 h1 {
   font-size: 5rem;
@@ -70,7 +69,7 @@ figure {
     inset 26px 0 black, inset -26px 0 black, inset -26px -96px black,
     inset 26px -96px black;
   width: 672px;
-  margin: 0 auto;
+  margin: 0 auto 3rem;
   z-index: -1;
 }
 figure:before {
