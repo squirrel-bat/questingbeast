@@ -98,7 +98,7 @@ figure img {
   border: 2px solid rgba(0, 0, 0, 0.5);
   background: var(--scryfall-lightpurple);
   box-shadow: 0 0.5rem 0 var(--scryfall-darkpurple);
-  transition: all 0.2s ease-out;
+  transition: all 0.15s ease-out;
 }
 
 .btn-help:hover {

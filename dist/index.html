@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>What does Questing Beast do?</title>
-    <link rel="stylesheet" href="main.css?v=1.3" />
+    <link rel="stylesheet" href="main.css?v=1.4" />
     <script src="beast.js"></script>
   </head>
   <body class="bg-lightgreen">
@@ -24,9 +24,11 @@
         onclick="
         document.getElementById('details').classList.toggle('show');
         document.querySelectorAll('.btn-help span').forEach(el => {
-            el.classList.toggle('hidden');
+          el.classList.toggle('hidden');
         })
-        window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: 'smooth'});
+        if(document.getElementById('details').classList.contains('show')) {
+          window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: 'smooth'});
+        }
 "
       >
         <span>Show me the Details!</span>
