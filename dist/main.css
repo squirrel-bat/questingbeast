@@ -1,6 +1,6 @@
 @font-face {
   font-family: "AmaticSC";
-  src: url("AmaticSC-Regular.ttf");
+  src: url("dist/AmaticSC-Regular.ttf");
 }
 .lightgreen {
   color: var(--lightgreen);
