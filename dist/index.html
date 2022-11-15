@@ -4,12 +4,14 @@
     <meta charset="UTF-8" />
     <title>Questing Beast</title>
     <link rel="stylesheet" href="main.css" />
+    <script src="beast.js"></script>
   </head>
   <body class="bg-lightgreen">
     <main>
       <h1>What does <span class="qb-word green">Questing Beast</span> do?</h1>
       <figure>
         <img
+          id="questingbeast"
           src="https://cards.scryfall.io/large/front/e/4/e41cf82d-3213-47ce-a015-6e51a8b07e4f.jpg"
           alt="&nbsp;
 &nbsp;
@@ -47,6 +49,9 @@
                                            ╰───────╯&nbsp; &nbsp;&nbsp;"
         />
       </figure>
+      <button class="btn-crash center" onclick="crashScryfall(this)">
+        Crash Scryfall
+      </button>
     </main>
   </body>
 </html>

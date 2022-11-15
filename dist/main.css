@@ -2,6 +2,14 @@
   font-family: "AmaticSC";
   src: url("AmaticSC-Regular.ttf");
 }
+:root {
+  --green: rgb(0, 115, 62);
+  --lightgreen: rgb(196, 211, 202);
+  --scryfall-darkpurple: #343242;
+  --scryfall-purple: #4b485f;
+  --scryfall-lightpurple: #634496;
+}
+
 .lightgreen {
   color: var(--lightgreen);
 }
@@ -31,13 +39,9 @@
   }
 }
 
-:root {
-  --green: rgb(0, 115, 62);
-  --lightgreen: rgb(196, 211, 202);
-}
-
 body {
   font-family: "AmaticSC", sans-serif;
+  font-size: 2.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,6 +49,8 @@ body {
 main {
   max-width: 1260px;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 h1 {
   font-size: 5rem;
@@ -63,7 +69,7 @@ figure {
     inset 26px 0 black, inset -26px 0 black, inset -26px -96px black,
     inset 26px -96px black;
   width: 672px;
-  margin: 0 auto;
+  margin: 0 auto 3rem;
   z-index: -1;
 }
 figure:before {
@@ -94,4 +100,26 @@ figure img {
   white-space: pre-wrap;
   font-family: monospace;
   font-size: 1.41rem;
+}
+.center {
+  align-self: center;
+}
+.btn-crash {
+  cursor: pointer;
+  font: inherit;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  background: var(--scryfall-lightpurple);
+  box-shadow: 0 0.5rem 0 var(--scryfall-darkpurple);
+  transition: all 0.3s ease-out;
+}
+
+.btn-crash:hover {
+  transform: translateY(0.3rem);
+  box-shadow: 0 0.2rem 0 var(--scryfall-darkpurple);
+}
+.btn-crash:active {
+  transform: translateY(0.5rem);
+  box-shadow: 0 0 0 var(--scryfall-darkpurple);
 }
