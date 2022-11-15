@@ -65,41 +65,11 @@ figure {
   position: relative;
   border-radius: 2rem;
   overflow: hidden;
-  box-shadow: 5px 10px 10px rgba(0, 20, 5, 0.5), inset 0 26px black,
-    inset 26px 0 black, inset -26px 0 black, inset -26px -96px black,
-    inset 26px -96px black;
-  width: 672px;
+  box-shadow: 5px 10px 10px rgba(0, 20, 5, 0.5);
   margin: 0 auto 3rem;
-  z-index: -1;
-}
-figure:before {
-  content: "";
-  height: 54px;
-  width: 583px;
-  background: var(--lightgreen);
-  border-radius: 8px;
-  position: absolute;
-  bottom: 67px;
-  left: 44px;
-  z-index: -1;
-}
-figure:after {
-  content: "";
-  height: 54px;
-  width: 100px;
-  background: var(--lightgreen);
-  border-radius: 8px;
-  position: absolute;
-  bottom: 41px;
-  right: 33px;
-  z-index: -1;
 }
 figure img {
   vertical-align: top;
-  background: transparent;
-  white-space: pre-wrap;
-  font-family: monospace;
-  font-size: 1.41rem;
 }
 .center {
   align-self: center;
