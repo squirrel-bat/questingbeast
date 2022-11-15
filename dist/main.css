@@ -5,6 +5,7 @@
 :root {
   --green: rgb(0, 115, 62);
   --lightgreen: rgb(196, 211, 202);
+  --red: rgb(185, 0, 0);
   --scryfall-darkpurple: #343242;
   --scryfall-purple: #4b485f;
   --scryfall-lightpurple: #634496;
@@ -21,6 +22,9 @@
 }
 .bg-green {
   background-color: var(--green);
+}
+.red {
+  color: var(--red);
 }
 @keyframes questingbeast {
   0% {
@@ -45,12 +49,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 6rem;
 }
 main {
   max-width: 1260px;
   position: relative;
   display: flex;
   flex-direction: column;
+  margin-top: 3rem;
+  gap: 3rem;
 }
 h1 {
   font-size: 5rem;
@@ -66,7 +73,7 @@ figure {
   border-radius: 2rem;
   overflow: hidden;
   box-shadow: 5px 10px 10px rgba(0, 20, 5, 0.5);
-  margin: 0 auto 3rem;
+  margin: 0 auto;
 }
 figure img {
   vertical-align: top;
@@ -74,22 +81,56 @@ figure img {
 .center {
   align-self: center;
 }
-.btn-crash {
+.text-center {
+  text-align: center;
+}
+.italic {
+  font-style: italic;
+}
+.btn-help {
   cursor: pointer;
   font: inherit;
+  font-size: 3rem;
   color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
+  text-shadow: 2px 2px 0 black;
+  border: 2px solid rgba(0, 0, 0, 0.5);
   background: var(--scryfall-lightpurple);
   box-shadow: 0 0.5rem 0 var(--scryfall-darkpurple);
-  transition: all 0.3s ease-out;
+  transition: all 0.2s ease-out;
 }
 
-.btn-crash:hover {
+.btn-help:hover {
   transform: translateY(0.3rem);
   box-shadow: 0 0.2rem 0 var(--scryfall-darkpurple);
 }
-.btn-crash:active {
+.btn-help:active {
   transform: translateY(0.5rem);
+  opacity: 0.8;
   box-shadow: 0 0 0 var(--scryfall-darkpurple);
+}
+#details {
+  margin: 0 auto;
+  opacity: 0;
+  transform-origin: top center;
+  transition: all 0.3s ease;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.show {
+  opacity: 1 !important;
+}
+.hidden {
+  display: none;
+}
+#details > div {
+  padding: 2rem;
+  font-weight: bold;
+}
+#details h2 {
+  margin-top: 0;
+}
+#details li {
+  padding: 0 0.5rem 1rem;
 }

@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <title>What does Questing Beast do?</title>
-    <link rel="stylesheet" href="main.css?v=1.2" />
+    <link rel="stylesheet" href="main.css?v=1.3" />
+    <script src="beast.js"></script>
   </head>
   <body class="bg-lightgreen">
     <main>
@@ -12,9 +13,47 @@
         <img
           id="questingbeast"
           src="https://cards.scryfall.io/large/front/e/4/e41cf82d-3213-47ce-a015-6e51a8b07e4f.jpg"
-          alt="Questing Beast - 2 ☘ ☘"
+          alt="Questing Beast - 2 ☘ ☘&nbsp;"
         />
       </figure>
+      <h2 class="text-center">
+        Okay, but reading the card did not explain the card...
+      </h2>
+      <button
+        class="btn-help center"
+        onclick="
+        document.getElementById('details').classList.toggle('show');
+        document.querySelectorAll('.btn-help span').forEach(el => {
+            el.classList.toggle('hidden');
+        })
+        window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: 'smooth'});
+"
+      >
+        <span>Show me the Details!</span>
+        <span class="hidden">Oh no, please make it stop!</span>
+      </button>
+      <article id="details">
+        <div>
+          <h2>It <span class="green">does</span>...</h2>
+          <ol>
+            <li>Kill almost everything it touches.</li>
+            <li>Make sure the hits your Creatures land will hurt.</li>
+            <li>Win you the game.</li>
+            <li>Gain more Text with every time you look at it.</li>
+            <li>Too many things. Let's read it one more time!</li>
+          </ol>
+        </div>
+        <div>
+          <h2>It <span class="red">does not</span>...</h2>
+          <ol>
+            <li>Tap when attacking.</li>
+            <li>Have time for any hesitation.</li>
+            <li>Care for your opponent's weaklings.</li>
+            <li>Accept combat damage prevention.</li>
+            <li>Have Planeswalker Deathtouch. (Sorry, Kyle)</li>
+          </ol>
+        </div>
+      </article>
     </main>
   </body>
 </html>
