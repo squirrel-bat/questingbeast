@@ -1,0 +1,137 @@
+@font-face {
+  font-family: "AmaticSC";
+  src: url("AmaticSC-Regular.ttf");
+}
+.lightgreen {
+  color: var(--lightgreen);
+}
+.bg-lightgreen {
+  background-color: var(--lightgreen);
+}
+.green {
+  color: var(--green);
+}
+.bg-green {
+  background-color: var(--green);
+}
+@keyframes questingbeast {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+@keyframes rainbow {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+:root {
+  --green: rgb(0, 115, 62);
+  --lightgreen: rgb(196, 211, 202);
+}
+
+body {
+  font-family: "AmaticSC", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main {
+  max-width: 1260px;
+  position: relative;
+}
+h1 {
+  font-size: 5rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+.qb-word {
+  display: inline-block;
+  animation: questingbeast 3s infinite;
+}
+figure {
+  position: relative;
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 5px 10px 10px rgba(0, 20, 5, 0.5), inset 0 26px black,
+    inset 26px 0 black, inset -26px 0 black, inset -26px -96px black,
+    inset 26px -96px black;
+  width: 672px;
+  margin: 0 auto;
+  z-index: -1;
+}
+figure:before {
+  content: "";
+  height: 54px;
+  width: 583px;
+  background: var(--lightgreen);
+  border-radius: 8px;
+  position: absolute;
+  bottom: 67px;
+  left: 44px;
+  z-index: -1;
+}
+figure:after {
+  content: "";
+  height: 54px;
+  width: 100px;
+  background: var(--lightgreen);
+  border-radius: 8px;
+  position: absolute;
+  bottom: 41px;
+  right: 33px;
+  z-index: -1;
+}
+figure img {
+  vertical-align: top;
+  background: transparent;
+  white-space: pre-wrap;
+  font-family: monospace;
+  font-size: 1.41rem;
+}
+
+.content:hover {
+  cursor: help;
+}
+.content:hover .answer {
+  opacity: 1;
+  transform: translateY(-342px);
+  transition: all 500ms;
+}
+.answer {
+  opacity: 0;
+  margin: 0 auto;
+  width: 560px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 10rem;
+  font-weight: bold;
+  text-shadow: 2px 2px #000;
+  border-radius: 1rem;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+
+  background: var(--lightgreen);
+  background: linear-gradient(
+    90deg,
+    #e81d1d,
+    #e8b71d,
+    #e3e81d,
+    #1de840,
+    #1ddde8,
+    #2b1de8,
+    #dd00f3,
+    #dd00f3,
+    #e81d1d
+  );
+  background-size: 200%;
+  animation: rainbow 2s linear infinite;
+}
