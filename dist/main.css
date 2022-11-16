@@ -44,7 +44,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 6rem;
 }
 #back_menu {
   position: absolute;
@@ -97,16 +96,13 @@ article {
   flex-direction: column;
   align-items: center;
 }
-article > * {
+article > *:not(.hidden, figure) {
   opacity: 1;
   animation: fade-in 0.5s ease-in-out;
 }
 @keyframes fade-in {
   0% {
     opacity: 0;
-  }
-  50% {
-    opacity: 0.5;
   }
   100% {
     opacity: 1;
@@ -190,6 +186,9 @@ figure img {
 }
 #details h2 {
   margin-top: 0;
+}
+#details ol {
+  margin: 0;
 }
 #details li {
   padding: 0 0.5rem 1rem;
