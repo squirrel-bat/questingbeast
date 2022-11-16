@@ -38,6 +38,9 @@
 .disabled {
   display: none !important;
 }
+html {
+  font-size: 16px;
+}
 body {
   font-family: "AmaticSC", sans-serif;
   font-size: 2.5rem;
@@ -192,4 +195,12 @@ figure img {
 }
 #details li {
   padding: 0 0.5rem 1rem;
+}
+img {
+  max-width: 100%;
+}
+@media screen and (max-device-width: 480px) {
+  html {
+    font-size: 8px;
+  }
 }
