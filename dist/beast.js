@@ -8,13 +8,15 @@ function drag(ev) {
 
 function drop(ev) {
   ev.preventDefault();
-  var data = ev.dataTransfer.getData("text");
-  ev.target.appendChild(document.getElementById(data));
+  const data = ev.dataTransfer.getData("text");
+  if (ev.target.id === "text_box") {
+    ev.target.appendChild(document.getElementById(data));
+  }
 }
 
 function check() {
-  box = document.getElementById("text_box");
-  abilities = document.getElementById("abilities");
+  const box = document.getElementById("text_box");
+  const abilities = document.getElementById("abilities");
   console.log(box);
   if (
     box.querySelector("#drag1") !== null &&

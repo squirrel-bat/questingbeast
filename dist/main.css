@@ -163,4 +163,5 @@ figure img {
   font-size: 1.5rem;
   line-height: 1.5rem;
   margin-bottom: 0.5rem;
+  cursor: move;
 }
