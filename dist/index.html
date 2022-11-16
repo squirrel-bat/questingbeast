@@ -3,61 +3,65 @@
   <head>
     <meta charset="UTF-8" />
     <title>What does Questing Beast do?</title>
-    <link rel="stylesheet" href="main.css?v=1.4" />
-    <script src="beast.js"></script>
+    <link rel="stylesheet" href="main.css?v=1.5" />
+    <script src="beast.js?v=1.5"></script>
   </head>
   <body class="bg-lightgreen">
+    <div id="back_menu" class="menu display-none">
+      <button class="btn-default btn-secondary btn-sm" onclick="reset()">
+        < Take me back
+      </button>
+    </div>
     <main>
       <h1>What does <span class="qb-word green">Questing Beast</span> do?</h1>
-      <figure>
-        <img
-          id="questingbeast"
-          src="https://cards.scryfall.io/large/front/e/4/e41cf82d-3213-47ce-a015-6e51a8b07e4f.jpg"
-          alt="Questing Beast - 2 ☘ ☘&nbsp;"
-        />
-      </figure>
-      <h2 class="text-center">
-        Okay, but reading the card did not explain the card...
-      </h2>
-      <button
-        class="btn-help center"
-        onclick="
-        document.getElementById('details').classList.toggle('show');
-        document.querySelectorAll('.btn-help span').forEach(el => {
-          el.classList.toggle('hidden');
-        })
-        if(document.getElementById('details').classList.contains('show')) {
-          window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: 'smooth'});
-        }
-"
-      >
-        <span>Show me the Details!</span>
-        <span class="hidden">Oh no, please make it stop!</span>
-      </button>
-      <article id="details">
-        <div>
-          <h2>It <span class="green">does</span>...</h2>
-          <ol>
-            <li>Kill almost everything it touches.</li>
-            <li>Make sure the hits your Creatures land will hurt.</li>
-            <li>Win you the game.</li>
-            <li>Gain more Text with every time you look at it.</li>
-            <li>Too many things. Let's read it one more time!</li>
-          </ol>
-        </div>
-        <div>
-          <h2>It <span class="red">does not</span>...</h2>
-          <ol>
-            <li>Tap when attacking.</li>
-            <li>Have time for any hesitation.</li>
-            <li>Care for your opponent's weaklings.</li>
-            <li>Accept combat damage prevention.</li>
-            <li>Have Planeswalker Deathtouch. (Sorry, Kyle)</li>
-          </ol>
+      <nav class="menu flex-row">
+        <button class="btn-default center" onclick="showTabById('info')">
+          Tell me!
+        </button>
+        <span>or</span>
+        <button class="btn-default center" onclick="showTabById('quiz')">
+          Quiz me!
+        </button>
+      </nav>
+      <article id="info" class="display-none">
+        <figure>
+          <img
+            id="questingbeast"
+            src="https://cards.scryfall.io/large/front/e/4/e41cf82d-3213-47ce-a015-6e51a8b07e4f.jpg"
+            alt="Questing Beast - 2 ☘ ☘&nbsp;"
+          />
+        </figure>
+        <h2 class="text-center">
+          Okay, but reading the card did not explain the card...
+        </h2>
+        <button class="btn-default center" onclick="toggleDetails()">
+          <span>Show me the Details!</span>
+          <span class="display-none">Oh no, please make it stop!</span>
+        </button>
+        <div id="details" class="hidden">
+          <div>
+            <h2>It <span class="green">does</span>...</h2>
+            <ol>
+              <li>Kill almost everything it touches.</li>
+              <li>Make sure the hits your Creatures land will hurt.</li>
+              <li>Win you the game.</li>
+              <li>Gain more Text with every time you look at it.</li>
+              <li>Too many things. Let's read it one more time!</li>
+            </ol>
+          </div>
+          <div>
+            <h2>It <span class="red">does not</span>...</h2>
+            <ol>
+              <li>Tap when attacking.</li>
+              <li>Have time for any hesitation.</li>
+              <li>Care for your opponent's weaklings.</li>
+              <li>Accept combat damage prevention.</li>
+              <li>Have Planeswalker Deathtouch. (Sorry, Kyle)</li>
+            </ol>
+          </div>
         </div>
       </article>
-
-      <article id="guess_the_abilities">
+      <article id="quiz" class="display-none">
         <h2 class="text-center">
           You think you know what it does? Try dragging the correct abilities
           into its text box.
@@ -65,60 +69,60 @@
         <div
           class="textbox"
           id="text_box"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
+          ondrop="drop.apply(this, arguments)"
+          ondragover="allowDrop.apply(this, arguments)"
         ></div>
         <div
           class="abilities"
           id="abilities"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
+          ondrop="drop.apply(this, arguments)"
+          ondragover="allowDrop.apply(this, arguments)"
         >
           <div
-            class="ability"
+            class="keyword ability"
             id="drag2"
             draggable="true"
-            ondragstart="drag(event)"
+            ondragstart="drag.apply(this, arguments)"
           >
             Deathtouch
           </div>
           <div
-            class="ability"
+            class="keyword ability"
             id="drag8"
             draggable="true"
-            ondragstart="drag(event)"
+            ondragstart="drag.apply(this, arguments)"
           >
             Lifelink
           </div>
           <div
-            class="ability"
+            class="keyword ability"
             id="drag9"
             draggable="true"
-            ondragstart="drag(event)"
+            ondragstart="drag.apply(this, arguments)"
           >
             Menace
           </div>
           <div
-            class="ability"
+            class="keyword ability"
             id="drag1"
             draggable="true"
-            ondragstart="drag(event)"
+            ondragstart="drag.apply(this, arguments)"
           >
             Vigilance
           </div>
           <div
-            class="ability"
+            class="keyword ability"
             id="drag7"
             draggable="true"
-            ondragstart="drag(event)"
+            ondragstart="drag.apply(this, arguments)"
           >
             Trample
           </div>
           <div
-            class="ability"
+            class="keyword ability"
             id="drag3"
             draggable="true"
-            ondragstart="drag(event)"
+            ondragstart="drag.apply(this, arguments)"
           >
             Haste
           </div>
@@ -126,7 +130,7 @@
             class="ability"
             id="drag10"
             draggable="true"
-            ondragstart="drag(event)"
+            ondragstart="drag.apply(this, arguments)"
           >
             Questing Beast can’t be blocked by creatures with power 3 or more.
           </div>
@@ -134,7 +138,7 @@
             class="ability"
             id="drag4"
             draggable="true"
-            ondragstart="drag(event)"
+            ondragstart="drag.apply(this, arguments)"
           >
             Questing Beast can’t be blocked by creatures with power 2 or less.
           </div>
@@ -142,7 +146,7 @@
             class="ability"
             id="drag5"
             draggable="true"
-            ondragstart="drag(event)"
+            ondragstart="drag.apply(this, arguments)"
           >
             Combat damage that would be dealt by creatures you control can’t be
             prevented.
@@ -151,27 +155,27 @@
             class="ability"
             id="drag11"
             draggable="true"
-            ondragstart="drag(event)"
+            ondragstart="drag.apply(this, arguments)"
           >
-            Other creatures you control have deathtouch
+            Other creatures you control have deathtouch.
           </div>
           <div
             class="ability"
             id="drag12"
             draggable="true"
-            ondragstart="drag(event)"
+            ondragstart="drag.apply(this, arguments)"
           >
-            Whenever Questing Beast deals combat damage to an opponent,<br />destroy
+            Whenever Questing Beast deals combat damage to an opponent, destroy
             target enchantment or artifact that player controls.
           </div>
           <div
             class="ability"
             id="drag6"
             draggable="true"
-            ondragstart="drag(event)"
+            ondragstart="drag.apply(this, arguments)"
           >
-            Whenever Questing Beast deals combat damage to an opponent,<br />it
-            deals that much damage to target planeswalker that player controls.
+            Whenever Questing Beast deals combat damage to an opponent, it deals
+            that much damage to target planeswalker that player controls.
           </div>
         </div>
         <div class="center">
