@@ -7,7 +7,7 @@
     <script src="beast.js?v=1.5"></script>
   </head>
   <body class="bg-lightgreen">
-    <div id="back_menu" class="menu display-none">
+    <div id="back_menu" class="menu display-none disabled">
       <button class="btn-default btn-secondary btn-sm" onclick="reset()">
         < Take me back
       </button>
@@ -17,10 +17,6 @@
       <nav class="menu flex-row">
         <button class="btn-default center" onclick="showTabById('info')">
           Tell me!
-        </button>
-        <span>or</span>
-        <button class="btn-default center" onclick="showTabById('quiz')">
-          Quiz me!
         </button>
       </nav>
       <article id="info" class="display-none">
@@ -60,9 +56,6 @@
             </ol>
           </div>
         </div>
-      </article>
-      <article id="quiz" class="display-none">
-        <h2>Quiz is coming.</h2>
       </article>
     </main>
   </body>
