@@ -2,16 +2,23 @@
   font-family: "AmaticSC";
   src: url("AmaticSC-Regular.ttf");
 }
+@font-face {
+  font-family: "CrimsonText";
+  src: url("CrimsonText-Regular.ttf");
+}
 :root {
   --green: rgb(0, 115, 62);
   --lightgreen: rgb(196, 211, 202);
   --red: rgb(185, 0, 0);
+  --darkred: rgb(165, 0, 0);
   --darkpurple: #343242;
   --purple: #4b485f;
   --lightpurple: #634496;
   --lightpurple-25: #63449640;
 }
-
+* {
+  box-sizing: border-box;
+}
 .lightgreen {
   color: var(--lightgreen);
 }
@@ -22,10 +29,13 @@
   color: var(--green);
 }
 .bg-green {
-  background-color: var(--green);
+  background-color: var(--green) !important;
 }
 .red {
   color: var(--red);
+}
+.bg-red {
+  background-color: var(--darkred) !important;
 }
 @keyframes questingbeast {
   0% {
@@ -41,12 +51,20 @@
 html {
   font-size: 16px;
 }
+@media screen and (max-device-width: 480px) {
+  html {
+    font-size: 8px;
+  }
+}
 body {
   font-family: "AmaticSC", sans-serif;
   font-size: 2.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+img {
+  max-width: 100%;
 }
 #back_menu {
   position: absolute;
@@ -197,11 +215,46 @@ figure img {
 #details li {
   padding: 0 0.5rem 1rem;
 }
-img {
-  max-width: 100%;
+#quiz > h2 {
+  margin: 0;
 }
-@media screen and (max-device-width: 480px) {
-  html {
-    font-size: 8px;
-  }
+#quiz:not(.display-none) {
+  display: flex;
+  gap: 3rem;
+}
+#question {
+  position: relative;
+  font-family: CrimsonText, serif;
+  font-size: 1.8rem;
+  line-height: 1.8rem;
+  background: rgba(212, 216, 219);
+  border: 4px solid var(--green);
+  border-top-width: 3px;
+  border-radius: 3px;
+  box-shadow: inset -2px 3px 3px rgba(0, 0, 0, 0.33),
+    inset 2px -3px 3px rgba(255, 255, 255, 0.33);
+  padding: 14px 10px;
+  min-height: 280px;
+  width: 570px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: clip;
+  overflow-clip-margin: 4px;
+}
+#question::before,
+#question::after {
+  content: "[...]";
+  color: #aaa;
+}
+#stamp {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: 90px;
+  height: 90px;
+  border: 4px solid var(--green);
+  border-radius: 999px;
+  background: var(--lightgreen);
 }
