@@ -45,7 +45,7 @@
         <div id="details" class="hidden">
           <div>
             <h2>It <span class="green">does</span>...</h2>
-            <ol>
+            <ol class="m-0">
               <li>Kill almost everything it touches.</li>
               <li>Make sure the hits your Creatures land will hurt.</li>
               <li>Win you the game.</li>
@@ -66,17 +66,30 @@
         </div>
       </article>
       <article id="quiz" class="display-none">
-        <h2>Does it have...</h2>
+        <h2 class="m-0">Does it have...</h2>
         <div id="question">
-          <span></span>
+          <span class="text"></span>
           <div id="stamp"></div>
+          <div id="power-toughness"></div>
         </div>
-        <div class="flex-row">
-          <button class="btn-default bg-green center" onclick="nextQuestion()">
+        <div id="answers" class="flex-row">
+          <button
+            class="btn-default bg-green center"
+            onclick="giveAnswer.call(this, true)"
+          >
             Yupp!
           </button>
-          <button class="btn-default bg-red center" onclick="nextQuestion()">
+          <button
+            class="btn-default bg-red center"
+            onclick="giveAnswer.call(this, false)"
+          >
             Nah!
+          </button>
+        </div>
+        <div id="result" class="flex-row display-none">
+          <h2 class="text m-0"></h2>
+          <button class="btn-default center" onclick="nextQuestion()">
+            Next >
           </button>
         </div>
       </article>

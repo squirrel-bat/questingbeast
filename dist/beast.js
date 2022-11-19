@@ -50,12 +50,26 @@ const questions = [
   new Yes(
     "Whenever Questing Beast deals combat damage to an opponent, it deals that much damage to target planeswalker that player controls."
   ),
+  new No("Other creatures you control have deathtouch."),
+  new No(
+    "Whenever Questing Beast deals combat damage to an opponent, destroy target enchantment or artifact that player controls."
+  ),
+  new No("Questing Beast can’t be blocked by creatures with power 3 or more"),
+  new No("Trample"),
+  new No("Planeswalker deathtouch"),
 ];
 
 function nextQuestion() {
   const quiz = document.getElementById("quiz");
   if (!quiz) return;
-  const element = document.querySelector("#question span");
+
+  const resultElement = document.getElementById("result");
+  resultElement.classList.add("display-none");
+
+  const answersElement = document.getElementById("answers");
+  answersElement.classList.remove("display-none");
+
+  const element = document.querySelector("#question > .text");
   const oldId = parseInt(element.dataset.id);
   let newId = Math.floor(Math.random() * questions.length);
   while (newId === oldId) {
@@ -64,5 +78,24 @@ function nextQuestion() {
   const question = questions[newId];
   element.dataset.id = newId.toString();
   element.innerText = question.ability;
-  document.querySelector("#question span").replaceWith(element);
+  document.querySelector("#question > .text").replaceWith(element);
+}
+
+function giveAnswer(a) {
+  if (typeof a !== "boolean") throw Error("You know what you did.");
+  const answersElement = document.getElementById("answers");
+  const questionTextElement = document.querySelector("#question > .text");
+  const id = parseInt(questionTextElement.dataset.id);
+  const resultElement = document.getElementById("result");
+  const resultTextElement = resultElement.querySelector(".text");
+  const correct = questions.at(id).answer === a;
+
+  answersElement.classList.add("display-none");
+  resultTextElement.innerText = correct
+    ? "You are correct!"
+    : "Whoops, that's wrong!";
+  resultTextElement.classList.remove("green", "red");
+  resultTextElement.classList.add(correct ? "green" : "red");
+
+  resultElement.classList.remove("display-none");
 }

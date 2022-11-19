@@ -15,9 +15,13 @@
   --purple: #4b485f;
   --lightpurple: #634496;
   --lightpurple-25: #63449640;
+  --bg--grey: rgba(216, 220, 223);
 }
 * {
   box-sizing: border-box;
+}
+button {
+  user-select: none !important;
 }
 .lightgreen {
   color: var(--lightgreen);
@@ -108,6 +112,9 @@ h1 {
   text-transform: uppercase;
   text-align: center;
 }
+.m-0 {
+  margin: 0;
+}
 .qb-word {
   display: inline-block;
   animation: questingbeast 3s infinite;
@@ -119,7 +126,7 @@ article {
 }
 article > *:not(.hidden, figure) {
   opacity: 1;
-  animation: fade-in 0.5s ease-in-out;
+  animation: fade-in 0.3s ease-in-out;
 }
 @keyframes fade-in {
   0% {
@@ -209,14 +216,10 @@ figure img {
   margin-top: 0;
 }
 #details ol {
-  margin: 0;
   padding-inline-start: 2.5rem;
 }
 #details li {
   padding: 0 0.5rem 1rem;
-}
-#quiz > h2 {
-  margin: 0;
 }
 #quiz:not(.display-none) {
   display: flex;
@@ -227,15 +230,15 @@ figure img {
   font-family: CrimsonText, serif;
   font-size: 1.8rem;
   line-height: 1.8rem;
-  background: rgba(212, 216, 219);
+  background: var(--bg--grey);
   border: 4px solid var(--green);
   border-top-width: 3px;
   border-radius: 3px;
   box-shadow: inset -2px 3px 3px rgba(0, 0, 0, 0.33),
     inset 2px -3px 3px rgba(255, 255, 255, 0.33);
   padding: 14px 10px;
-  min-height: 280px;
-  width: 570px;
+  min-height: 286px;
+  width: 582px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -249,12 +252,57 @@ figure img {
 }
 #stamp {
   position: absolute;
-  bottom: -30px;
+  bottom: -45px;
   left: 50%;
   transform: translate(-50%, 50%);
-  width: 90px;
-  height: 90px;
+  width: 120px;
+  height: 120px;
   border: 4px solid var(--green);
   border-radius: 999px;
   background: var(--lightgreen);
+}
+
+#power-toughness {
+  position: absolute;
+  bottom: -60px;
+  right: -20px;
+  width: 120px;
+  height: 120px;
+  border: 4px solid var(--green);
+  border-radius: 999px;
+  background: var(--lightgreen);
+}
+
+#power-toughness::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 5px;
+  height: 30px;
+  width: 91px;
+  border: 4px solid var(--green);
+  border-top: none;
+  border-left: none;
+  background: var(--bg--grey);
+  box-shadow: inset -4px -1px 3px -2px rgba(0, 0, 0, 0.33);
+}
+
+#result .text {
+  font-weight: bold;
+  animation: correct 0.4s ease-in-out;
+}
+
+@keyframes correct {
+  0% {
+    transform: scale(1) translateY(-100%);
+  }
+  50% {
+    transform: scale(1.01, 0.5);
+  }
+  70% {
+    transform: scale(0.99, 1.1);
+  }
+  90% {
+    transform: scale(1.01, 0.9);
+  }
 }
