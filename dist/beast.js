@@ -54,7 +54,7 @@ const questions = [
   new No(
     "Whenever Questing Beast deals combat damage to an opponent, destroy target enchantment or artifact that player controls."
   ),
-  new No("Questing Beast can’t be blocked by creatures with power 3 or more"),
+  new No("Questing Beast can’t be blocked by creatures with power 3 or more."),
   new No("Trample"),
   new No("Planeswalker deathtouch"),
 ];
