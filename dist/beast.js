@@ -66,6 +66,11 @@ function nextQuestion() {
   const resultElement = document.getElementById("result");
   resultElement.classList.add("display-none");
 
+  if (answered.length === questions.length) {
+    console.log("💀");
+    return;
+  }
+
   const answersElement = document.getElementById("answers");
   answersElement.classList.remove("display-none");
 
@@ -75,7 +80,11 @@ function nextQuestion() {
   while (newId === oldId) {
     newId = Math.floor(Math.random() * questions.length);
   }
+  while (answered.find((e) => e === newId)) {
+    newId = Math.floor(Math.random() * questions.length);
+  }
   const question = questions[newId];
+  answered.push(newId);
   element.dataset.id = newId.toString();
   element.innerText = question.ability;
   document.querySelector("#question > .text").replaceWith(element);
@@ -99,3 +108,5 @@ function giveAnswer(a) {
 
   resultElement.classList.remove("display-none");
 }
+
+const answered = [];
