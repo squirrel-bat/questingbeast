@@ -206,9 +206,9 @@ figure img {
   opacity: 0;
 }
 .display-none {
-  display: none;
+  display: none !important;
 }
-#details > div {
+.column {
   padding: 2rem;
   font-weight: bold;
 }
@@ -289,6 +289,7 @@ figure img {
 
 #result .text {
   font-weight: bold;
+  user-select: none !important;
   animation: correct 0.4s ease-in-out;
 }
 
@@ -305,4 +306,11 @@ figure img {
   90% {
     transform: scale(1.01, 0.9);
   }
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
 }

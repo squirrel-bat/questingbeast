@@ -39,7 +39,7 @@ function No(q) {
   this.answer = false;
 }
 
-const questions = [
+const QUESTIONS = [
   new Yes("Vigilance"),
   new Yes("Deathtouch"),
   new Yes("Haste"),
@@ -59,6 +59,8 @@ const questions = [
   new No("Planeswalker deathtouch"),
 ];
 
+const ANSWERED = [];
+
 function nextQuestion() {
   const quiz = document.getElementById("quiz");
   if (!quiz) return;
@@ -66,28 +68,30 @@ function nextQuestion() {
   const resultElement = document.getElementById("result");
   resultElement.classList.add("display-none");
 
-  if (answered.length === questions.length) {
-    console.log("💀");
+  if (ANSWERED.length === QUESTIONS.length) {
+    const summary = document.getElementById("summary");
+    summary.classList.remove("display-none");
+    quiz.replaceChildren(summary);
+    showSummaryStep(1);
     return;
   }
 
   const answersElement = document.getElementById("answers");
   answersElement.classList.remove("display-none");
 
-  const element = document.querySelector("#question > .text");
-  const oldId = parseInt(element.dataset.id);
-  let newId = Math.floor(Math.random() * questions.length);
+  const questionTextElement = document.querySelector("#question > .text");
+  const oldId = parseInt(questionTextElement.dataset.id);
+  let newId = Math.floor(Math.random() * QUESTIONS.length);
   while (newId === oldId) {
-    newId = Math.floor(Math.random() * questions.length);
+    newId = Math.floor(Math.random() * QUESTIONS.length);
   }
-  while (answered.find((e) => e === newId)) {
-    newId = Math.floor(Math.random() * questions.length);
+  while (ANSWERED.find((e) => e.id === newId)) {
+    newId = Math.floor(Math.random() * QUESTIONS.length);
   }
-  const question = questions[newId];
-  answered.push(newId);
-  element.dataset.id = newId.toString();
-  element.innerText = question.ability;
-  document.querySelector("#question > .text").replaceWith(element);
+  const question = QUESTIONS[newId];
+  questionTextElement.dataset.id = newId.toString();
+  questionTextElement.innerText = question.ability;
+  document.querySelector("#question > .text").replaceWith(questionTextElement);
 }
 
 function giveAnswer(a) {
@@ -97,7 +101,7 @@ function giveAnswer(a) {
   const id = parseInt(questionTextElement.dataset.id);
   const resultElement = document.getElementById("result");
   const resultTextElement = resultElement.querySelector(".text");
-  const correct = questions.at(id).answer === a;
+  const correct = QUESTIONS.at(id).answer === a;
 
   answersElement.classList.add("display-none");
   resultTextElement.innerText = correct
@@ -105,8 +109,21 @@ function giveAnswer(a) {
     : "Whoops, that's wrong!";
   resultTextElement.classList.remove("green", "red");
   resultTextElement.classList.add(correct ? "green" : "red");
+  ANSWERED.push({
+    id: parseInt(questionTextElement.dataset.id),
+    correct: correct,
+  });
 
   resultElement.classList.remove("display-none");
 }
 
-const answered = [];
+function showSummaryStep(id) {
+  const summary = document.getElementById("summary");
+  summary.querySelectorAll(".step").forEach((el) => {
+    el.classList.add("display-none");
+  });
+  document
+    .getElementById("summary-step-" + id)
+    .classList.remove("display-none");
+  summary.replaceWith(summary);
+}
