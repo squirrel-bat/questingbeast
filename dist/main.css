@@ -8,6 +8,7 @@
 }
 :root {
   --green: rgb(0, 115, 62);
+  --darkgreen: rgb(11, 77, 44);
   --lightgreen: rgb(196, 211, 202);
   --red: rgb(185, 0, 0);
   --darkred: rgb(165, 0, 0);
@@ -16,6 +17,7 @@
   --lightpurple: #634496;
   --lightpurple-25: #63449640;
   --bg--grey: rgba(216, 220, 223);
+  --progress-bar-height: 7rem;
 }
 * {
   box-sizing: border-box;
@@ -120,6 +122,7 @@ h1 {
   animation: questingbeast 3s infinite;
 }
 article {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -135,6 +138,9 @@ article > *:not(.hidden, figure) {
   100% {
     opacity: 1;
   }
+}
+section {
+  width: 100%;
 }
 figure {
   position: relative;
@@ -231,19 +237,19 @@ figure img {
   font-size: 1.8rem;
   line-height: 1.8rem;
   background: var(--bg--grey);
-  border: 4px solid var(--green);
-  border-top-width: 3px;
+  border: 0.25rem solid var(--green);
+  border-top-width: 0.1875rem;
   border-radius: 3px;
   box-shadow: inset -2px 3px 3px rgba(0, 0, 0, 0.33),
     inset 2px -3px 3px rgba(255, 255, 255, 0.33);
   padding: 14px 10px;
-  min-height: 286px;
-  width: 582px;
+  min-height: 17.875rem;
+  width: 36.375rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: clip;
-  overflow-clip-margin: 4px;
+  overflow-clip-margin: 0.25rem;
 }
 #question::before,
 #question::after {
@@ -252,23 +258,23 @@ figure img {
 }
 #stamp {
   position: absolute;
-  bottom: -45px;
+  bottom: -2.8125rem;
   left: 50%;
   transform: translate(-50%, 50%);
-  width: 120px;
-  height: 120px;
-  border: 4px solid var(--green);
+  width: 7.5rem;
+  height: 7.5rem;
+  border: 0.25rem solid var(--green);
   border-radius: 999px;
   background: var(--lightgreen);
 }
 
 #power-toughness {
   position: absolute;
-  bottom: -60px;
-  right: -20px;
-  width: 120px;
-  height: 120px;
-  border: 4px solid var(--green);
+  bottom: -3.75rem;
+  right: -1.25rem;
+  width: 7.5rem;
+  height: 7.5rem;
+  border: 0.25rem solid var(--green);
   border-radius: 999px;
   background: var(--lightgreen);
 }
@@ -276,11 +282,11 @@ figure img {
 #power-toughness::before {
   content: "";
   position: absolute;
-  top: -6px;
-  left: 5px;
-  height: 30px;
-  width: 91px;
-  border: 4px solid var(--green);
+  top: -0.375rem;
+  left: 0.3125rem;
+  height: 1.875rem;
+  width: 5.6875rem;
+  border: 0.25rem solid var(--green);
   border-top: none;
   border-left: none;
   background: var(--bg--grey);
@@ -313,4 +319,90 @@ figure img {
   flex-direction: column;
   align-items: center;
   gap: 3rem;
+}
+
+#summary-bar {
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+  height: calc(var(--progress-bar-height) + 1rem);
+  margin-top: 2rem;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  border-radius: 0.5rem;
+  text-shadow: 2px 2px 0 black;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25),
+    0 1px rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.1);
+  overflow: visible;
+}
+
+#summary-progress {
+  position: absolute;
+  top: 0.25rem;
+  left: 0.5rem;
+  height: calc(var(--progress-bar-height));
+  width: calc(0% - 1rem);
+  transform-origin: left center;
+  border-radius: 0.25rem;
+  background-color: var(--green);
+  box-shadow: 0 0.375rem 0.375rem -0.125rem var(--darkgreen), 0 0.375rem #333;
+  transition: width 3s ease-out;
+}
+
+#summary-progress::after {
+  content: url("questing-head.png");
+  position: absolute;
+  top: 50%;
+  right: 0;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.16))
+    drop-shadow(0 4px 3px rgba(0, 0, 0, 0.23));
+  --transform: translate(44%, -50px);
+  animation: questinghead 2s ease infinite;
+}
+@keyframes questinghead {
+  0%,
+  100% {
+    transform: var(--transform) rotateZ(8deg);
+  }
+  50% {
+    transform: var(--transform) rotateZ(-5deg);
+  }
+}
+#summary-bar.winner #summary-progress::after,
+#summary-bar.winner #summary-label {
+  animation: winner 1s ease-in-out infinite;
+}
+@keyframes winner {
+  0%,
+  50%,
+  100% {
+    transform: var(--transform) scale(0.9);
+  }
+  20%,
+  70% {
+    transform: var(--transform) scale(1.2);
+  }
+  0%,
+  100% {
+    transform: var(--transform) rotate3d(0, 1, 0.25, 20deg);
+  }
+  50% {
+    transform: var(--transform) rotate3d(0, 1, 0.25, -25deg);
+  }
+}
+
+#summary-label {
+  position: absolute;
+  top: 0.25rem;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  height: var(--progress-bar-height);
+  --transform: translateX(-50%);
+  transform: var(--transform);
+  transition: opacity 1s ease;
 }

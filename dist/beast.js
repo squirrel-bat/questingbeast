@@ -72,7 +72,7 @@ function nextQuestion() {
     const summary = document.getElementById("summary");
     summary.classList.remove("display-none");
     quiz.replaceChildren(summary);
-    showSummaryStep(1);
+    showQuizSummary(1);
     return;
   }
 
@@ -117,13 +117,35 @@ function giveAnswer(a) {
   resultElement.classList.remove("display-none");
 }
 
-function showSummaryStep(id) {
+function showQuizSummary() {
   const summary = document.getElementById("summary");
   summary.querySelectorAll(".step").forEach((el) => {
     el.classList.add("display-none");
   });
-  document
-    .getElementById("summary-step-" + id)
-    .classList.remove("display-none");
+  summary.querySelector("#summary-step-final").classList.remove("display-none");
   summary.replaceWith(summary);
+  document.getElementById("summary-progress").style.width = "calc(0% - 1rem)";
+  setTimeout(async () => {
+    const correctTotal = ANSWERED.filter((e) => e.correct === true);
+    const progress = (correctTotal.length / QUESTIONS.length).toFixed(2) * 100;
+    document.getElementById("summary-progress").style.width =
+      "calc(" + progress + "% - 1rem)";
+    const stepDelta = (3 / progress) * 1000;
+    for (let i = 1; i - 1 < progress; i++) {
+      document.getElementById("summary-percentage").innerText = i.toString();
+      await sleep(stepDelta);
+    }
+    const summaryLabel = document.getElementById("summary-label");
+    // summaryLabel.style.left = progress / 2 + "%";
+    summaryLabel.classList.remove("hidden");
+    if (progress === 100) {
+      document.getElementById("summary-bar").classList.add("winner");
+    } else {
+      document.getElementById("summary-bar").classList.remove("winner");
+    }
+  }, 100);
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
