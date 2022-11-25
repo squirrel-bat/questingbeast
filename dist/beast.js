@@ -131,13 +131,12 @@ function showQuizSummary() {
     document.getElementById("summary-progress").style.width =
       "calc(" + progress + "% - 1rem)";
     const stepDelta = (3 / progress) * 1000;
+    const summaryLabel = document.getElementById("summary-label");
+    summaryLabel.classList.remove("hidden");
     for (let i = 1; i - 1 < progress; i++) {
       document.getElementById("summary-percentage").innerText = i.toString();
       await sleep(stepDelta);
     }
-    const summaryLabel = document.getElementById("summary-label");
-    // summaryLabel.style.left = progress / 2 + "%";
-    summaryLabel.classList.remove("hidden");
     if (progress === 100) {
       document.getElementById("summary-bar").classList.add("winner");
     } else {
