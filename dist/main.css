@@ -314,7 +314,7 @@ figure img {
   }
 }
 
-.step {
+#summary {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -326,7 +326,6 @@ figure img {
   max-width: 100%;
   width: 100%;
   height: calc(var(--progress-bar-height) + 1rem);
-  margin-top: 2rem;
   color: white;
   font-weight: bold;
   text-align: left;

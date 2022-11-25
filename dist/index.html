@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-lightgreen">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="main.css" />
     <script src="beast.js"></script>
   </head>
-  <body class="bg-lightgreen">
+  <body class="display-none">
     <div id="back_menu" class="menu display-none">
-      <button class="btn-default btn-secondary btn-sm" onclick="reset()">
+      <button class="btn-default btn-secondary btn-sm" onclick="navigateTo()">
         < Take me back
       </button>
     </div>
@@ -50,10 +50,12 @@
             <h2>It <span class="green">does</span>...</h2>
             <ol class="m-0">
               <li>Kill almost everything it touches.</li>
-              <li>Make sure the hits your Creatures land will hurt.</li>
+              <li>
+                Have a personal feud with every Planeswalker in the Multiverse.
+              </li>
               <li>Win you the game.</li>
               <li>Gain more Text with every time you look at it.</li>
-              <li>Too many things. Let's read it one more time!</li>
+              <li>Way too many things. Let's read it one more time!</li>
             </ol>
           </div>
           <div class="column">
@@ -98,28 +100,20 @@
             Next >
           </button>
         </div>
-        <section id="summary" class="display-none">
-          <div id="summary-step-1" class="step">
-            <h2 class="m-0">Interesting.</h2>
-            <button class="btn-default center" onclick="showQuizSummary()">
-              ...how did i do?
-            </button>
-          </div>
-          <div id="summary-step-final" class="step text-center display-none">
-            <h2 class="m-0">Let's see, you were...</h2>
-            <div id="summary-bar">
-              <div id="summary-progress"></div>
-              <div id="summary-label" class="hidden">
-                <span id="summary-percentage">0</span>% CORRECT!
-              </div>
-            </div>
-            <div>
-              <h3></h3>
-              <button class="btn-default center" onclick="reset()">
-                Got it!
-              </button>
+        <h4 id="quiz-progress" class="m-0 display-none">
+          Quiz Progress: <span id="questions-left">0/1</span>
+        </h4>
+        <section id="summary" class="text-center display-none">
+          <h2 class="m-0">Let's see, you were...</h2>
+          <div id="summary-bar">
+            <div id="summary-progress"></div>
+            <div id="summary-label" class="hidden">
+              <span id="summary-percentage">0</span>% CORRECT!
             </div>
           </div>
+          <button class="btn-default center" onclick="navigateTo('page-quiz')">
+            Retry!
+          </button>
         </section>
       </article>
     </main>

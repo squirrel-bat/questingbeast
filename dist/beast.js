@@ -1,3 +1,33 @@
+const ROUTES = [
+  {
+    route: "page-info",
+    navigate: () => {
+      showTabById("info");
+    },
+  },
+  {
+    route: "page-quiz",
+    navigate: () => {
+      showTabById("quiz");
+      nextQuestion();
+    },
+  },
+];
+
+window.addEventListener("load", () => {
+  document.querySelector("body").classList.add("display-none");
+  const route = window.location.hash.slice(1);
+  const validRoute = ROUTES.find((e) => e.route === route);
+  if (validRoute !== undefined) validRoute.navigate();
+
+  document.querySelector("body").classList.remove("display-none");
+});
+
+function navigateTo(anchor = "", reload = true) {
+  window.location.hash = anchor;
+  if (reload === true) window.location.reload();
+}
+
 function toggleDetails() {
   document.getElementById("details").classList.toggle("hidden");
   document.querySelectorAll(".btn-default span").forEach((el) => {
@@ -19,12 +49,9 @@ function toggleMenuState() {
 }
 
 function showTabById(id) {
+  window.location.hash = "page-" + id;
   toggleMenuState();
   document.getElementById(id).classList.toggle("display-none");
-}
-
-function reset() {
-  location.reload();
 }
 
 // Quiz
@@ -59,11 +86,13 @@ const QUESTIONS = [
   new No("Trample over Planeswalkers"),
   new No("Planeswalker deathtouch"),
   new No("Whenever this creature is dealt damage, put a +1/+1 counter on it."),
-  new No("Whenever a creature you control becomes tapped, you may put a quest counter on Questing Beast"),
+  new No(
+    "Whenever a creature you control becomes tapped, you may put a quest counter on Questing Beast."
+  ),
   new No(
     "{G}: Questing Beast gets +1/+1 until end of turn. Target opponent creates a 1/1 green Beast creature token."
-    ),
-  new No("Green spells you control can't be countered"),
+  ),
+  new No("Green spells you control can’t be countered."),
   new No(
     "4{G}{G}: Until end of turn, each creature you control has base power and toughness 5/5 and becomes a Beast in addition to its other creature types."
   ),
@@ -82,7 +111,7 @@ function nextQuestion() {
     const summary = document.getElementById("summary");
     summary.classList.remove("display-none");
     quiz.replaceChildren(summary);
-    showQuizSummary(1);
+    showQuizSummary();
     return;
   }
 
@@ -123,17 +152,13 @@ function giveAnswer(a) {
     id: parseInt(questionTextElement.dataset.id),
     correct: correct,
   });
-
+  document.getElementById("quiz-progress").classList.remove("display-none");
+  document.getElementById("questions-left").innerText =
+    ANSWERED.length.toString() + "/" + QUESTIONS.length.toString();
   resultElement.classList.remove("display-none");
 }
 
 function showQuizSummary() {
-  const summary = document.getElementById("summary");
-  summary.querySelectorAll(".step").forEach((el) => {
-    el.classList.add("display-none");
-  });
-  summary.querySelector("#summary-step-final").classList.remove("display-none");
-  summary.replaceWith(summary);
   document.getElementById("summary-progress").style.width = "calc(0% - 1rem)";
   setTimeout(async () => {
     const correctTotal = ANSWERED.filter((e) => e.correct === true);
