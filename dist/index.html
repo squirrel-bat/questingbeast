@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-lightgreen">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>What does Questing Beast do?</title>
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
     <link rel="stylesheet" href="main.css" />
     <script src="beast.js"></script>
   </head>
-  <body class="bg-lightgreen">
-    <div id="back_menu" class="menu display-none disabled">
-      <button class="btn-default btn-secondary btn-sm" onclick="reset()">
+  <body class="display-none">
+    <div id="back_menu" class="menu display-none">
+      <button class="btn-default btn-secondary btn-sm" onclick="navigateTo()">
         < Take me back
       </button>
     </div>
@@ -18,6 +21,13 @@
       <nav class="menu flex-row">
         <button class="btn-default center" onclick="showTabById('info')">
           Tell me!
+        </button>
+        <span>or</span>
+        <button
+          class="btn-default center"
+          onclick="showTabById('quiz'); nextQuestion();"
+        >
+          Quiz me!
         </button>
       </nav>
       <article id="info" class="display-none">
@@ -36,17 +46,19 @@
           <span class="display-none">Oh no, please make it stop!</span>
         </button>
         <div id="details" class="hidden">
-          <div>
+          <div class="column">
             <h2>It <span class="green">does</span>...</h2>
-            <ol>
+            <ol class="m-0">
               <li>Kill almost everything it touches.</li>
-              <li>Make sure the hits your Creatures land will hurt.</li>
+              <li>
+                Have a personal feud with every Planeswalker in the Multiverse.
+              </li>
               <li>Win you the game.</li>
               <li>Gain more Text with every time you look at it.</li>
-              <li>Too many things. Let's read it one more time!</li>
+              <li>Way too many things. Let's read it one more time!</li>
             </ol>
           </div>
-          <div>
+          <div class="column">
             <h2>It <span class="red">does not</span>...</h2>
             <ol>
               <li>Tap when attacking.</li>
@@ -60,6 +72,49 @@
             </ol>
           </div>
         </div>
+      </article>
+      <article id="quiz" class="display-none">
+        <h2 class="m-0">Does it have...</h2>
+        <div id="question">
+          <span class="text"></span>
+          <div id="stamp"></div>
+          <div id="power-toughness"></div>
+        </div>
+        <div id="answers" class="flex-row">
+          <button
+            class="btn-default bg-green center"
+            onclick="giveAnswer.call(this, true)"
+          >
+            Yupp!
+          </button>
+          <button
+            class="btn-default bg-red center"
+            onclick="giveAnswer.call(this, false)"
+          >
+            Nah!
+          </button>
+        </div>
+        <div id="result" class="flex-row display-none">
+          <h2 class="text m-0"></h2>
+          <button class="btn-default center" onclick="nextQuestion()">
+            Next >
+          </button>
+        </div>
+        <h4 id="quiz-progress" class="m-0 display-none">
+          Quiz Progress: <span id="questions-left">0/1</span>
+        </h4>
+        <section id="summary" class="text-center display-none">
+          <h2 class="m-0">Let's see, you were...</h2>
+          <div id="summary-bar">
+            <div id="summary-progress"></div>
+            <div id="summary-label" class="hidden">
+              <span id="summary-percentage">0</span>% CORRECT!
+            </div>
+          </div>
+          <button class="btn-default center" onclick="navigateTo('page-quiz')">
+            Retry!
+          </button>
+        </section>
       </article>
     </main>
   </body>
