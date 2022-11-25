@@ -56,7 +56,17 @@ const QUESTIONS = [
   ),
   new No("Questing Beast can’t be blocked by creatures with power 3 or more."),
   new No("Trample"),
+  new No("Trample over Planeswalkers"),
   new No("Planeswalker deathtouch"),
+  new No("Whenever this creature is dealt damage, put a +1/+1 counter on it."),
+  new No("Whenever a creature you control becomes tapped, you may put a quest counter on Questing Beast"),
+  new No(
+    "{G}: Questing Beast gets +1/+1 until end of turn. Target opponent creates a 1/1 green Beast creature token."
+    ),
+  new No("Green spells you control can't be countered"),
+  new No(
+    "4{G}{G}: Until end of turn, each creature you control has base power and toughness 5/5 and becomes a Beast in addition to its other creature types."
+  ),
 ];
 
 const ANSWERED = [];
@@ -72,7 +82,7 @@ function nextQuestion() {
     const summary = document.getElementById("summary");
     summary.classList.remove("display-none");
     quiz.replaceChildren(summary);
-    showSummaryStep(1);
+    showQuizSummary(1);
     return;
   }
 
@@ -117,13 +127,34 @@ function giveAnswer(a) {
   resultElement.classList.remove("display-none");
 }
 
-function showSummaryStep(id) {
+function showQuizSummary() {
   const summary = document.getElementById("summary");
   summary.querySelectorAll(".step").forEach((el) => {
     el.classList.add("display-none");
   });
-  document
-    .getElementById("summary-step-" + id)
-    .classList.remove("display-none");
+  summary.querySelector("#summary-step-final").classList.remove("display-none");
   summary.replaceWith(summary);
+  document.getElementById("summary-progress").style.width = "calc(0% - 1rem)";
+  setTimeout(async () => {
+    const correctTotal = ANSWERED.filter((e) => e.correct === true);
+    const progress = (correctTotal.length / QUESTIONS.length).toFixed(2) * 100;
+    document.getElementById("summary-progress").style.width =
+      "calc(" + progress + "% - 1rem)";
+    const stepDelta = (3 / progress) * 1000;
+    const summaryLabel = document.getElementById("summary-label");
+    summaryLabel.classList.remove("hidden");
+    for (let i = 1; i - 1 < progress; i++) {
+      document.getElementById("summary-percentage").innerText = i.toString();
+      await sleep(stepDelta);
+    }
+    if (progress === 100) {
+      document.getElementById("summary-bar").classList.add("winner");
+    } else {
+      document.getElementById("summary-bar").classList.remove("winner");
+    }
+  }, 100);
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }

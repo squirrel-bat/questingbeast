@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>What does Questing Beast do?</title>
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
     <link rel="stylesheet" href="main.css" />
     <script src="beast.js"></script>
   </head>
@@ -98,13 +101,24 @@
         <section id="summary" class="display-none">
           <div id="summary-step-1" class="step">
             <h2 class="m-0">Interesting.</h2>
-            <button class="btn-default center" onclick="showSummaryStep(2)">
+            <button class="btn-default center" onclick="showQuizSummary()">
               ...how did i do?
             </button>
           </div>
-          <div id="summary-step-2" class="step display-none">
-            <h2 class="m-0">Summary</h2>
-            <div>[insert numbers and fancy animations here]</div>
+          <div id="summary-step-final" class="step text-center display-none">
+            <h2 class="m-0">Let's see, you were...</h2>
+            <div id="summary-bar">
+              <div id="summary-progress"></div>
+              <div id="summary-label" class="hidden">
+                <span id="summary-percentage">0</span>% CORRECT!
+              </div>
+            </div>
+            <div>
+              <h3></h3>
+              <button class="btn-default center" onclick="reset()">
+                Got it!
+              </button>
+            </div>
           </div>
         </section>
       </article>
