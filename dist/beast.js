@@ -56,7 +56,17 @@ const QUESTIONS = [
   ),
   new No("Questing Beast can’t be blocked by creatures with power 3 or more."),
   new No("Trample"),
+  new No("Trample over Planeswalkers"),
   new No("Planeswalker deathtouch"),
+  new No("Whenever this creature is dealt damage, put a +1/+1 counter on it."),
+  new No("Whenever a creature you control becomes tapped, you may put a quest counter on Questing Beast"),
+  new No(
+    "{G}: Questing Beast gets +1/+1 until end of turn. Target opponent creates a 1/1 green Beast creature token."
+    ),
+  new No("Green spells you control can't be countered"),
+  new No(
+    "4{G}{G}: Until end of turn, each creature you control has base power and toughness 5/5 and becomes a Beast in addition to its other creature types."
+  ),
 ];
 
 const ANSWERED = [];
