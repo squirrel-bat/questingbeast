@@ -90,11 +90,11 @@ const QUESTIONS = [
     "Whenever a creature you control becomes tapped, you may put a quest counter on Questing Beast."
   ),
   new No(
-    "{G}: Questing Beast gets +1/+1 until end of turn. Target opponent creates a 1/1 green Beast creature token."
+    "G: Questing Beast gets +1/+1 until end of turn. Target opponent creates a 1/1 green Beast creature token."
   ),
   new No("Green spells you control can’t be countered."),
   new No(
-    "4{G}{G}: Until end of turn, each creature you control has base power and toughness 5/5 and becomes a Beast in addition to its other creature types."
+    "4GG: Until end of turn, each creature you control has base power and toughness 5/5 and becomes a Beast in addition to its other creature types."
   ),
 ];
 
