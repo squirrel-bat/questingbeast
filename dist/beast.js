@@ -174,6 +174,11 @@ function showQuizSummary() {
     }
     if (progress === 100) {
       document.getElementById("summary-bar").classList.add("winner");
+      const button = document.getElementById("retry-button");
+      button.innerText = "Toggle Party!";
+      button.onclick = () => {
+        document.querySelector("html").classList.toggle("party");
+      };
     } else {
       document.getElementById("summary-bar").classList.remove("winner");
     }

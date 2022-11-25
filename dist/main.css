@@ -372,8 +372,8 @@ figure img {
     transform: var(--transform) rotateZ(-5deg);
   }
 }
-#summary-bar.winner #summary-progress::after,
-#summary-bar.winner #summary-label {
+.winner #summary-progress::after,
+.winner #summary-label {
   animation: winner 1s ease-in-out infinite;
 }
 @keyframes winner {
@@ -407,4 +407,28 @@ figure img {
   --transform: translateX(-50%);
   transform: var(--transform);
   transition: opacity 1s ease;
+}
+
+html.party::after {
+  content: "";
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  pointer-events: none;
+  animation: party 0.75s linear infinite;
+}
+@keyframes party {
+  0%,
+  100% {
+    background: #f00;
+  }
+  33% {
+    background: #0f0;
+  }
+  66% {
+    background: #00f;
+  }
 }
