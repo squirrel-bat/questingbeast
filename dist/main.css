@@ -66,11 +66,16 @@ html {
   }
 }
 body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0.5rem;
   font-family: "AmaticSC", sans-serif;
   font-size: 2.5rem;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  gap: 3rem;
 }
 img {
   max-width: 100%;
@@ -431,4 +436,16 @@ html.party::after {
   66% {
     background: #00f;
   }
+}
+
+#footer {
+  font-size: 1.5rem;
+  align-self: stretch;
+}
+a {
+  text-decoration: none;
+  color: var(--lightpurple);
+}
+a:hover {
+  text-decoration: underline;
 }
