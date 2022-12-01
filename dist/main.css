@@ -101,6 +101,7 @@ img {
   background: var(--lightpurple-25) !important;
 }
 main {
+  width: 100%;
   max-width: 1260px;
   position: relative;
   display: flex;
