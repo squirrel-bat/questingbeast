@@ -14,14 +14,44 @@ const ROUTES = [
   },
 ];
 
+const THE_CODE = {
+  active: false,
+  pos: 0,
+  code: [
+    "ArrowUp",
+    "ArrowUp",
+    "ArrowDown",
+    "ArrowDown",
+    "ArrowLeft",
+    "ArrowRight",
+    "ArrowLeft",
+    "ArrowRight",
+    "b",
+    "a",
+  ],
+};
+
 window.addEventListener("load", () => {
   document.querySelector("body").classList.add("display-none");
   const route = window.location.hash.slice(1);
   const validRoute = ROUTES.find((e) => e.route === route);
-  if (validRoute !== undefined) validRoute.navigate();
+  if (typeof validRoute !== "undefined") validRoute.navigate();
 
   document.querySelector("body").classList.remove("display-none");
 });
+
+function handleKeys(e) {
+  THE_CODE.pos = e.key === THE_CODE.code[THE_CODE.pos] ? THE_CODE.pos + 1 : 0;
+  if (THE_CODE.pos === THE_CODE.code.length) {
+    THE_CODE.active = true;
+    document.querySelector(
+      "h1"
+    ).innerHTML = `Let's cheat with <span class="qb-word green">Questing Beast</span>!`;
+    window.removeEventListener("keydown", handleKeys);
+  }
+}
+
+window.addEventListener("keydown", handleKeys);
 
 function navigateTo(anchor = "", reload = true) {
   window.location.hash = anchor;
@@ -130,6 +160,13 @@ function nextQuestion() {
   const question = QUESTIONS[newId];
   questionTextElement.dataset.id = newId.toString();
   questionTextElement.innerText = question.ability;
+  if (THE_CODE.active === true) {
+    const bg = question.answer ? "bg-green" : "bg-red";
+    questionTextElement.insertAdjacentHTML(
+      "beforeend",
+      `<div id="hint" class="${bg}">${question.answer}</div>`
+    );
+  }
   document.querySelector("#question > .text").replaceWith(questionTextElement);
 }
 
@@ -142,6 +179,7 @@ function giveAnswer(a) {
   const resultTextElement = resultElement.querySelector(".text");
   const correct = QUESTIONS.at(id).answer === a;
 
+  document.getElementById("hint")?.classList.add("display-none");
   answersElement.classList.add("display-none");
   resultTextElement.innerText = correct
     ? "You are correct!"
