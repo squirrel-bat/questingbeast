@@ -265,6 +265,20 @@ figure img {
   content: "[...]";
   color: #aaa;
 }
+#hint {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  padding: 1rem 1.5rem;
+  border-radius: 999px;
+  z-index: 1;
+  color: #fff;
+  text-shadow: 0.125rem 0.125rem 0 black;
+  box-shadow: -2px 3px 3px rgba(0, 0, 0, 0.33),
+    2px -3px 3px rgba(255, 255, 255, 0.33);
+  text-transform: uppercase;
+  transform: translateX(-50%);
+}
 #stamp {
   position: absolute;
   bottom: -2.8125rem;
