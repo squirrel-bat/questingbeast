@@ -51,9 +51,6 @@ button {
     transform: scale(1.05);
   }
 }
-.disabled {
-  display: none !important;
-}
 html {
   font-size: 16px;
 }
