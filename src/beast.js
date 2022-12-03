@@ -41,6 +41,16 @@ window.addEventListener("load", () => {
 });
 
 function handleKeys(e) {
+  if (window.location.hash.length > 1) {
+    return;
+  } else {
+    const visiblePages = Array.from(
+      document.getElementsByTagName("article")
+    ).filter((el) => !el.classList.contains("display-none"));
+    if (visiblePages.length > 0) {
+      return;
+    }
+  }
   THE_CODE.pos = e.key === THE_CODE.code[THE_CODE.pos] ? THE_CODE.pos + 1 : 0;
   if (THE_CODE.pos === THE_CODE.code.length) {
     THE_CODE.active = true;
