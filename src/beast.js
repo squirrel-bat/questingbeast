@@ -77,7 +77,7 @@ function toggleDetails() {
   if (!detailsElement.classList.contains('hidden')) {
     window.scrollTo({
       left: 0,
-      top: document.body.scrollHeight,
+      top: detailsElement.offsetTop,
       behavior: 'smooth',
     })
   }
