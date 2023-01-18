@@ -52,11 +52,11 @@ button {
   }
 }
 html {
-  font-size: 16px;
+  font-size: 1rem;
 }
 @media screen and (max-device-width: 480px) {
   html {
-    font-size: 8px;
+    font-size: 0.5rem;
   }
   h1 {
     font-size: 4.5rem !important;
@@ -68,7 +68,7 @@ body {
   margin: 0;
   padding: 0.5rem;
   font-family: "AmaticSC", sans-serif;
-  font-size: 2.5rem;
+  font-size: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -106,6 +106,7 @@ main {
   flex-direction: column;
   align-items: center;
   margin-top: 3rem;
+  padding-bottom: 6rem;
   gap: 3rem;
 }
 .flex-row {
@@ -137,6 +138,17 @@ article {
 article > *:not(.hidden, figure) {
   opacity: 1;
   animation: fade-in 0.3s ease-in-out;
+}
+#info {
+  padding: 0 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+}
+#info > h2 {
+  margin: 0;
 }
 @keyframes fade-in {
   0% {
@@ -209,11 +221,21 @@ figure img {
   box-shadow: 0 0 0 var(--darkpurple);
 }
 #details {
-  margin: 0 auto;
+  --details-border: 0.125rem dashed var(--purple);
+  --details-overlap: 6rem;
+
+  z-index: -1;
+  margin: calc(var(--details-overlap) * -1) -2rem 0;
+  padding-top: var(--details-overlap);
+  padding-bottom: 3rem;
   transform-origin: top center;
   transition: all 0.3s ease;
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  background: var(--bg--grey);
+  border-radius: 0.5rem;
+  outline: var(--details-border);
 }
 .hidden {
   opacity: 0;
@@ -222,14 +244,19 @@ figure img {
   display: none !important;
 }
 .column {
-  padding: 4rem 2rem;
   font-weight: bold;
+  padding: 0 2rem;
+}
+.column:first-child {
+  border-right: var(--details-border);
 }
 #details h2 {
-  margin-top: 0;
+  margin: 0;
+  text-align: center;
 }
 #details ol {
   padding-inline-start: 2.5rem;
+  margin-bottom: 0;
 }
 #details li {
   padding: 0 0.5rem 1rem;
