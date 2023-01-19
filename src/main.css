@@ -1,10 +1,10 @@
 @font-face {
-  font-family: "AmaticSC";
-  src: url("AmaticSC-Regular.ttf");
+  font-family: 'AmaticSC';
+  src: url('AmaticSC-Regular.ttf');
 }
 @font-face {
-  font-family: "CrimsonText";
-  src: url("CrimsonText-Regular.ttf");
+  font-family: 'CrimsonText';
+  src: url('CrimsonText-Regular.ttf');
 }
 :root {
   --green: rgb(0, 115, 62);
@@ -67,7 +67,7 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0.5rem;
-  font-family: "AmaticSC", sans-serif;
+  font-family: 'AmaticSC', sans-serif;
   font-size: 2rem;
   display: flex;
   flex-direction: column;
@@ -287,7 +287,7 @@ figure img {
 }
 #question::before,
 #question::after {
-  content: "[...]";
+  content: '[...]';
   color: #aaa;
 }
 #hint {
@@ -328,7 +328,7 @@ figure img {
 }
 
 #power-toughness::before {
-  content: "";
+  content: '';
   position: absolute;
   top: -0.375rem;
   left: 0.3125rem;
@@ -399,7 +399,7 @@ figure img {
 }
 
 #summary-progress::after {
-  content: url("questing-head.png");
+  content: url('questing-head.png');
   position: absolute;
   top: 50%;
   right: 0;
@@ -455,7 +455,7 @@ figure img {
 }
 
 html.party::after {
-  content: "";
+  content: '';
   height: 100%;
   width: 100%;
   position: fixed;
