@@ -54,7 +54,7 @@ button {
 html {
   font-size: 1rem;
 }
-@media screen and (max-device-width: 480px) {
+@media screen and (max-device-width: 640px) {
   html {
     font-size: 0.5rem;
   }
@@ -167,6 +167,7 @@ figure {
   overflow: hidden;
   box-shadow: 5px 10px 10px rgba(0, 20, 5, 0.5);
   margin: 0 auto;
+  max-width: 42rem;
   animation: pop 0.5s ease-in-out;
 }
 @keyframes pop {
