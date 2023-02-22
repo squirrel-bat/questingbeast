@@ -66,7 +66,7 @@ body {
   position: relative;
   min-height: 100vh;
   margin: 0;
-  padding: 0.5rem;
+  padding: 0;
   font-family: 'AmaticSC', sans-serif;
   font-size: 2rem;
   display: flex;
@@ -74,6 +74,28 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 3rem;
+}
+#footer {
+  font-size: 2rem;
+  align-self: stretch;
+}
+#footer span {
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  background: var(--lightgreen);
+  opacity: 1;
+  animation: fade-in 0.3s ease-in-out;
+}
+#fan-content-policy {
+  font-family: system-ui;
+  font-size: 0.75rem;
+  display: block;
+  bottom: 0;
+  padding: 0.5rem;
+  background: var(--lightpurple-25);
+  color: var(--purple);
 }
 img {
   max-width: 100%;
@@ -477,23 +499,6 @@ html.party::after {
   66% {
     background: #00f;
   }
-}
-
-#footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding-bottom: 0.5rem;
-  font-size: 2rem;
-  font-weight: bold;
-  align-self: start;
-}
-#footer span {
-  padding: 0.5rem 1rem 0.5rem 0.5rem;
-  border-top-right-radius: 0.5rem;
-  background: var(--lightgreen);
-  opacity: 1;
-  animation: fade-in 0.3s ease-in-out;
 }
 a {
   text-decoration: none;
