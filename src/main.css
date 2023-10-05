@@ -243,11 +243,13 @@ figure img {
   opacity: 0.8;
   box-shadow: 0 0 0 var(--darkpurple);
 }
+#detail-btn {
+  z-index: 1;
+}
 #details {
   --details-border: 0.125rem dashed var(--purple);
   --details-overlap: 6rem;
 
-  z-index: -1;
   margin: calc(var(--details-overlap) * -1) -2rem 0;
   padding-top: var(--details-overlap);
   padding-bottom: 3rem;
