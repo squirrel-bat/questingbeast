@@ -10,6 +10,7 @@
   --green: rgb(0, 115, 62);
   --darkgreen: rgb(11, 77, 44);
   --lightgreen: rgb(196, 211, 202);
+  --white: rgb(235, 235, 235);
   --red: rgb(185, 0, 0);
   --darkred: rgb(165, 0, 0);
   --darkpurple: #343242;
@@ -223,8 +224,9 @@ figure img {
 .btn-default {
   cursor: pointer;
   font: inherit;
+  font-weight: bold;
   font-size: 3rem;
-  color: white;
+  color: var(--white);
   padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
   text-shadow: 0.125rem 0.125rem 0 black;
