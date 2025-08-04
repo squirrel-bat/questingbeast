@@ -3,11 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>What does Questing Beast do?</title>
     <link rel="icon" href="./favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
     <link rel="manifest" href="./site.webmanifest" />
-
     <link rel="preload" href="./AmaticSC-Regular.ttf" as="font" crossorigin />
     <link
       rel="preload"
@@ -16,12 +14,43 @@
       crossorigin
     />
 
+    <title>What does Questing Beast do?</title>
     <link rel="stylesheet" href="./main.css" />
     <script src="./beast.js"></script>
+    <meta
+      name="description"
+      content="A website to inform and quiz about the Magic: The Gathering card Questing Beast"
+    />
+    <meta name="theme-color" content="rgb(196, 211, 202)" />
+
+    <!-- SEO fluff -->
+    <meta
+      name="keywords"
+      content="questing beast card mtg magic the gathering questingbeast magicthegathering"
+    />
+    <!-- social media embed fluff -->
+    <meta property="og:site_name" content="squirrel-bat" />
+    <meta property="og:title" content="What does Questing Beast do?" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:description"
+      content="A website to inform and quiz about the Magic: The Gathering card Questing Beast"
+    />
+    <meta
+      property="og:url"
+      content="https://squirrel-bat.github.io/questingbeast/"
+    />
+    <meta
+      property="og:image"
+      content="https://squirrel-bat.github.io/questingbeast/questing-head.png"
+    />
   </head>
   <body class="display-none">
     <div id="back_menu" class="menu display-none">
-      <button class="btn-default btn-secondary btn-sm" onclick="navigateTo()">
+      <button
+        class="btn-default btn-secondary btn-sm"
+        onclick="navigateTo('#')"
+      >
         < Take me back
       </button>
     </div>
@@ -143,7 +172,8 @@
     </main>
     <div id="footer">
       <span>
-        © 2022 - present <a href="https://ko-fi.com/squirrelbat">squirrel-bat</a>
+        © 2022 - present
+        <a href="https://ko-fi.com/squirrelbat">squirrel-bat</a>
       </span>
       <div id="fan-content-policy">
         "What does Questing Beast do?" is unofficial Fan Content permitted under
